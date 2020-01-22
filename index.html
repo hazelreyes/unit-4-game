@@ -2,104 +2,75 @@
 <html>
 
 <head>
-    <title>Crystals Collector!</title>
+
+    <title>Crystal Game</title>
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div id="game-title">Crystals Collector!</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="instructions">
+                    <pre></pre>
+                    You will be given a random number at the start of the game.
+                    <pre></pre>
+                    There are four crystals below. By clicking on a crystal, you will
+                    add a specific amount of points to your total score.
+                    <pre></pre>
+                    You win the game by matching your total score to the random number.
+                    You lose the game if your total score goes above the random number.
+                    <pre></pre>
+                    The value of each crystal is hidden from you until you click on it.
+                    <pre></pre>
+                    Each time when the game starts, the game will change the values
+                    of each crystal.
+                    <pre></pre>
+                    <br>
+                    <br>
+                    <span id="good luck">Good luck! ;)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <div id="number-to-guess"></div>
+            </div>
+            <div class="col-lg-2">
+                <div id="wins-losses"><span id="win-or-loss"></span>
+                    <br>Wins: <span id="wins"></span>
+                    <br>Losses: <span id="losses"></span></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="crystals"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="total-words">Your total score is: </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="total-score"></div>
+            </div>
+        </div>
+    </div>
 
-    <h1><span id="number-to-guess"></span></h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
 
-    <p>Wins: <span id="wins"></span></p>
-    <p>Losses: <span id="losses"></span></p>
-
-    <div id="crystals"></div>
-
-    <p>Your total score is: </p>
-
-    <h1><span id="total-score"></span></h1>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-
-        var targetNumber = (Math.floor(Math.random() * 120) + 19);
-        $("#number-to-guess").text(targetNumber);
-
-        var numberOptions = [];
-
-        var crystals = ["assets/images/blue.jpg", "assets/images/purple.jpg",
-            "assets/images/teardrop.png", "assets/images/pink.jpg"];
-
-        var counter = 0;
-        var wins = 0;
-        var losses = 0;
-
-        
-        for (var i = 0; i < crystals.length; i++) {
-
-            //Need to make an if/else statement so that numbers for crystals
-            //will never equal one another
-            /*if (i > 0) {
-                
-                for (let j = 0; j < crystals.length; j++) {
-                    do {
-                        var randomNumber = (Math.floor(Math.random() * 12) + 1);
-                    } while (numberOptions.includes(randomNumber))
-                    numberOptions.push(randomNumber);
-                }
-
-                var crystalImages = $("<img>");
-                crystalImages.addClass("crystal-image");
-                crystalImages.attr("data-crystalvalue", numberOptions[i]);
-                crystalImages.attr("src", crystals[i]);
-                $("#crystals").append(crystalImages);
-
-            } else {*/
-            var randomNumber = (Math.floor(Math.random() * 12) + 1);
-            numberOptions.push(randomNumber);
-
-            var crystalImages = $("<img>");
-            crystalImages.addClass("crystal-image");
-            crystalImages.attr("data-crystalvalue", numberOptions[i]);
-            crystalImages.attr("src", crystals[i]);
-            $("#crystals").append(crystalImages);
-        }
-    //}
-
-        
-
-        // This time, our click event applies to every single crystal on the page. Not just one.
-        $(".crystal-image").on("click", function () {
-
-            // Determining the crystal's value requires us to extract the value from the data attribute.
-            // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
-            // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
-            // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
-
-            var crystalValue = ($(this).attr("data-crystalvalue"));
-            crystalValue = parseInt(crystalValue);
-            // We then add the crystalValue to the user's "counter" which is a global variable.
-            // Every click, from every crystal adds to the global counter.
-            counter += crystalValue;
-
-            // All of the same game win-lose logic applies. So the rest remains unchanged.
-            $("#total-score").html(counter);
-
-            if (counter === targetNumber) {
-                $("#total-score").html(counter);
-                wins++;
-                $("#wins").text(wins);
-            }
-            else if (counter >= targetNumber) {
-                $("#total-score").html(counter);
-                losses++;
-                $("#losses").text(losses);
-            }
-
-        });
-
-    </script>
 </body>
 
 </html>
