@@ -22,8 +22,8 @@ To use the Javascript programming language and jQuery library to create a web ga
 
 1. Install Visual Studio Code
 1. Install Git Bash
-1. Create repository `Psychic-Game` in GitHub
-1. Use Git Bash to `git clone` the repo `Psychic-Game`
+1. Create repository `unit-4-game` in GitHub
+1. Use Git Bash to `git clone` the repo `unit-4-game`
 1. Create `index.html` file and `assets` folder
 1. Inside `assets` folder, create folders `css` and `javascript`
 1. Inside the `css` folder, create `reset.css` file
