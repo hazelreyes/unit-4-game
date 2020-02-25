@@ -1,5 +1,7 @@
 # unit-4-game
 
+https://hazelreyes.github.io/unit-4-game/
+
 `unit-4-game` is a Javascript & jQuery web game where the user tries to get the same number as the number that the computer randomly picks by clicking on the correct crystals to add up to the number.
 
 ## Purpose
